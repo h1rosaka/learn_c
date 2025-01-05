@@ -49,3 +49,46 @@ C 言語のプログラムでは、どうして色々なデータ型を使い分
 Cの配列を扱う時、宣言時の大きさを越えたインデックスを用いても、コンパイルエラーとはならず、また、プログラムがどう動作するか全く予測できない。
 https://tcs.c.titech.ac.jp/csbook/c_lang/chap6.html
 
+
+char 型の配列の要素には、いつでも新しい値を代入することができますが、配列そのものに文字列をまとめて代入することはできません。= の右側に文字列を書くことができるのは、配列を宣言するときだけです。
+> https://tcs.c.titech.ac.jp/csbook/c_lang/chap6.html
+```c
+char hello[] = "Hello!";    /* OK */
+hello[0] = 'h';             /* OK */
+
+hello = "Aloha!";           /* Error */
+```
+
+
+charの配列の特別な宣言方法と、終端文字"\0"
+```c
+char hello[] = "Hello!";
+
+
+char hello[7];
+hello[0] = 'H';
+hello[1] = 'e';
+hello[2] = 'l';
+hello[3] = 'l';
+hello[4] = 'o';
+hello[5] = '!';
+hello[6] = '\0';    /* 文字列の最後を意味する文字 */
+
+```
+https://tcs.c.titech.ac.jp/csbook/c_lang/chap6.html
+
+
+
+ポインタ
+    - ある変数のメモリ上のアドレスを値として格納する変数
+    
+```c
+int  x = 5;     /* 変数 x    の値は 5 */
+int* p = &x;    /* ポインタ p は変数 x をさす */
+```
+    - &x
+        - 変数xポインタの(メモリ上のアドレス)を返す演算子
+        - アドレス演算子
+    - *p
+        - ポインタpが指す変数が格納している値を返す演算子
+
