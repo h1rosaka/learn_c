@@ -4,6 +4,4 @@
 int main(){
     char message[256];
 
-    printf(message[0]);
-
 }

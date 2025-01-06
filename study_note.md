@@ -87,8 +87,55 @@ int  x = 5;     /* 変数 x    の値は 5 */
 int* p = &x;    /* ポインタ p は変数 x をさす */
 ```
     - &x
-        - 変数xポインタの(メモリ上のアドレス)を返す演算子
+        - 変数xのポインタ(メモリ上のアドレス)を返す演算子
         - アドレス演算子
     - *p
         - ポインタpが指す変数が格納している値を返す演算子
 
+
+C言語の名前の由来
+- B言語というものをより便利に作り替えたのがC言語
+- B言語は BasicCPL というこれまた別の言語を継承して作られた言語
+- https://www.quora.com/Why-is-C-programming-language-named-so-Why-C-and-not-any-other-letter-like-A-M-N-V-etc
+
+
+
+文字列リテラルはポインタとして扱われる
+
+```c
+char *msg = "An error occurred";
+```
+- 文字列リテラル "An error occurred" がメモリに配置される。
+- その先頭アドレスが msg に代入される。
+
+>List 11-1 での "123" のような文字列リテラルを使うとき， 配列の宣言は行っていません． しかし，こうした文字列リテラルは， 記憶域上のどこかで配列のように保持されます（第１版 Fig.11-1，第２版 Fig. 11-2）． 配列を宣言していないのに， 自動的に配列が作成されたかのようです． 文字列リテラルは実質的に配列なので， 評価すると先頭要素（つまり，先頭の文字）へのポインタとなります．
+- https://lecture.ecc.u-tokyo.ac.jp/lterao/textbook/chap11/chap11.html
+
+
+
+```
+void errorHandler (char *msg) {
+  perror(msg);
+  exit(1);
+}
+```
+perror は ```perror("This is error message")```のように使って、エラー出力に文字列を出力できる。
+引数の*msgは、引数はポインタですよ、と示している。
+文字列リテラルは、評価されると、先頭の文字のアドレスを返す。
+つまり、perrorは先頭の文字のアドレスから、終端文字が出てくるまでをエラー出力に出している。
+
+
+
+
+コマンドライン引数
+    Cのプログラム実行時に、コマンドラインから与えることのできる引数
+```c
+// これを
+main(){...}
+// こうすると渡せるようになる
+main(int argc, char *argv[]){}
+    ....
+```
+    argcとして、コマンドライン引数の数を扱えて、argvとして各引数が入った配列を扱える
+
+https://www.ritsumei.ac.jp/~mmr14135/johoWeb/cmnds.html
