@@ -139,3 +139,4 @@ main(int argc, char *argv[]){}
     argcとして、コマンドライン引数の数を扱えて、argvとして各引数が入った配列を扱える
 
 https://www.ritsumei.ac.jp/~mmr14135/johoWeb/cmnds.html
+
